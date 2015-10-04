@@ -24,8 +24,8 @@ module wheelObject() {
     difference() {
         union() {
             cylinder(h=wh, r=wr, center=true);
-            linear_extrude(height = wh, scale = 0.25) {
-                circle(wr/3, center = true);
+            linear_extrude(height = wh, scale = 0.4) {
+                //circle(wr*0.6, center = true);
             }
         }
         legocross();
