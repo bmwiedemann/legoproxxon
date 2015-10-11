@@ -1,9 +1,9 @@
 // CSG.scad - Basic example of CSG usage
 
-wr=47;    // wheel radius
-wh=wr/10; // wheel height
-cw=wh;  // clamp width
-ch=23;  // clamp height
+cw=2;  // clamp width
+wr=cw+58/2;    // wheel radius
+wh=wr/18; // wheel height
+ch=13+wh;  // clamp height
 chs=ch/12;  // clamp holder size
 lsc=4.85;  // legocross size
 numclamps=4;
@@ -29,8 +29,8 @@ module wheelObject() {
             }
         }
         legocross();
-        translate([wr*0.6,0,0]) {
-            cylinder(h=2*wh, r=wr/6, center=true);
+        translate([wr*0.84,0,0]) {
+            cylinder(h=2*wh, r=wr/5.5, center=true);
         }
     }
 }
@@ -52,7 +52,7 @@ if(debug) {
 module clamps()
 {
     for (alpha = [1:numclamps]) {
-        rotate(alpha*360/numclamps) 
+        rotate(45+alpha*360/numclamps)
             translate([wr-cw/4, 0, ch/2-wh/2]) {
                 clamp();
             }
