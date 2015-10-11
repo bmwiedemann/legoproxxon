@@ -7,7 +7,6 @@ ch=13+wh;  // clamp height
 chs=ch/12;  // clamp holder size
 lsc=4.85;  // legocross size
 numteeth=round(360*wr/170);
-toothf=360/numteeth; // angle per tooth
 numclamps=4;
 debug=false;
 
@@ -30,7 +29,7 @@ module wheelObject() {
                 //circle(wr*0.6, center = true);
             }
             for (alpha = [0:numteeth])
-              rotate(alpha*toothf,0,0)
+              rotate(alpha*360/numteeth,0,0)
                 translate([wr*0.94,0,0])
                     tooth();
         }
