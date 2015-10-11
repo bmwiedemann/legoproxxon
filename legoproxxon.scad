@@ -1,6 +1,6 @@
 // CSG.scad - Basic example of CSG usage
 
-cw=2;  // clamp width
+cw=3;  // clamp width
 wr=cw+58/2;    // wheel radius
 wh=wr/18; // wheel height
 ch=13+wh;  // clamp height
