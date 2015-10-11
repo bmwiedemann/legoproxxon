@@ -58,7 +58,7 @@ if(debug) {
 module clamps()
 {
     for (alpha = [1:numclamps]) {
-        rotate(45+alpha*360/numclamps)
+        rotate((0.5+alpha)*360/numclamps)
             translate([wr-cw/4, 0, ch/2-wh/2]) {
                 clamp();
             }
