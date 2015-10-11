@@ -70,7 +70,8 @@ module clamp()
         cube([cw/2,cw,ch], center=true);
         translate([-cw/4,0, ch/2-chs*0.5]) {
             color("Red")
-            cube([chs, cw, chs], center=true);
+            rotate([90,0,0])
+              cylinder(h=cw, d=chs, center=true);
         }
     }
 }
