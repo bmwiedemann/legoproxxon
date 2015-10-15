@@ -6,14 +6,20 @@ wh=wr/18; // wheel height
 ch=13+wh;  // clamp height
 chs=ch/12;  // clamp holder size
 lsc=4.85;  // legocross size
-numteeth=round(360*wr/170);
+cpitch=8/3.1415926; // circular pitch
+numteeth=round((wr+5)*cpitch);
+wro=numteeth/cpitch;
 numclamps=4;
 debug=false;
 
-// Global resolution
-$fs = 0.1;  // Don't generate smaller facets than 0.1 mm
-$fa = 5;    // Don't generate larger angles than 5 degrees
 
+
+// Global resolution
+$fa = 5;    // Don't generate larger angles than 5 degrees
+$fs = 0.1;  // Don't generate smaller facets than 0.1 mm
+//$fn = 100;
+
+use <MCAD/involute_gears.scad>
 
 union() {
     wheelObject();
@@ -24,22 +30,44 @@ module wheelObject() {
     color("Lime")
     difference() {
         union() {
-            cylinder(h=wh, r=wr, center=true);
+            //cylinder(h=wh, r=wr, center=true);
+            biggear();
             linear_extrude(height = wh, scale = 0.4) {
                 //circle(wr*0.6, center = true);
             }
             for (alpha = [0:numteeth])
               rotate(alpha*360/numteeth,0,0)
-                translate([wr*0.94,0,0])
-                    tooth();
+                translate([wr*0.94,0,0]) {
+                    //tooth();
+                }
         }
         legocross();
         translate([wr*0.80,0,0]) {
-            cylinder(h=2*wh, r=wr/5.5, center=true);
+            //cylinder(h=2*wh, r=wr/5.5, center=true);
         }
     }
 }
 
+module biggear() {
+    echo(360*wro/numteeth);
+    echo(wro);
+    gear (
+			number_of_teeth=numteeth,
+			circular_pitch=360*wro/numteeth,
+			pressure_angle=20,
+			clearance = 0.2,
+			gear_thickness=wh,
+			rim_thickness=wh,
+			rim_width=5,
+			hub_thickness=0,
+			hub_diameter=30,
+			bore_diameter=0,
+			circles=numclamps,
+			backlash=0,
+			twist=0,
+			involute_facets=0,
+			flat=false);
+}
 
 module legocross() {
     union() {
