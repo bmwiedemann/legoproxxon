@@ -67,10 +67,10 @@ module clamp()
 {
     union() {
         cube([cw/2,cw,ch], center=true);
-        translate([-cw/4,0, ch/2-chs*0.5]) {
+        translate([-cw/4,0, ch/2-chs*0.71]) {
             color("Red")
-            rotate([90,0,0])
-              cylinder(h=cw, d=chs, center=true);
+            rotate([0,45,0])
+              cube([chs, cw, chs], center=true);
         }
     }
 }
