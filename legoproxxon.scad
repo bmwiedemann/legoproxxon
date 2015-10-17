@@ -2,12 +2,13 @@
 
 cw=3;  // clamp width
 wr=cw+58/2;    // wheel radius
-wh=wr/18; // wheel height
+wh=1.5; // wheel height
 ch=13+wh;  // clamp height
 chs=ch/12;  // clamp holder size
 lsc=4.85;  // legocross size
 cpitch=8/3.1415926; // circular pitch
-numteeth=round((wr+5)*cpitch);
+rim=3;
+numteeth=round((wr+rim)*cpitch);
 wro=numteeth/cpitch;
 numclamps=4;
 geartolerance=0.2;
@@ -59,9 +60,9 @@ module biggear() {
         clearance=geartolerance,
         backlash=geartolerance,
         gear_thickness=wh,
-        rim_thickness=wh,
-        rim_width=5,
-        hub_thickness=0,
+        rim_thickness=wh+1,
+        rim_width=rim,
+        hub_thickness=wh+1,
         hub_diameter=30,
         bore_diameter=15,
         circles=numclamps,
@@ -87,7 +88,7 @@ module clamps()
 {
     for (alpha = [1:numclamps]) {
         rotate((0.5+alpha)*360/numclamps)
-            translate([wr-cw/4, 0, ch/2-wh/2]) {
+            translate([wr-cw/4, 0, ch/2]) {
                 clamp();
             }
     }
