@@ -42,7 +42,7 @@ module wheelObject() {
                     //tooth();
                 }
         }
-        legocross(); // todo: hex screw hole
+        legocross();
         translate([wr*0.80,0,0]) {
             //cylinder(h=2*wh, r=wr/5.5, center=true);
         }
@@ -63,7 +63,7 @@ module biggear() {
         rim_width=5,
         hub_thickness=0,
         hub_diameter=30,
-        bore_diameter=0,
+        bore_diameter=15,
         circles=numclamps,
         twist=0,
         involute_facets=0,
