@@ -1,14 +1,15 @@
 // CSG.scad - Basic example of CSG usage
 
 cw=3;  // clamp width
-wr=cw+58/2;    // wheel radius
+rim=2;
+wr=29.5;    // wheel radius
+wro1=wr+rim+1;
 wh=1.5; // wheel height
 hubheight=1; // in addition to wh
 chs=1.4;  // clamp holder size
 ch=8+hubheight+chs*1.4+wh;  // clamp height
 cpitch=1.03; // diametral pitch
-rim=3;
-numteeth=round((wr+rim)*2*cpitch);
+numteeth=round((wro1)*2*cpitch);
 wro=numteeth/(2*cpitch);
 numclamps=4;
 geartolerance=0.2;
@@ -59,7 +60,7 @@ module clamps()
 {
     for (alpha = [1:numclamps]) {
         rotate((0.5+alpha)*360/numclamps)
-            translate([wro-rim-cw/4, 0, ch/2]) {
+            translate([wr+0.3, 0, ch/2]) {
                 clamp();
             }
     }
