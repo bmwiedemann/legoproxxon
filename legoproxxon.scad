@@ -10,6 +10,7 @@ cpitch=8/3.1415926; // circular pitch
 numteeth=round((wr+5)*cpitch);
 wro=numteeth/cpitch;
 numclamps=4;
+geartolerance=0.2;
 debug=false;
 
 
@@ -41,7 +42,7 @@ module wheelObject() {
                     //tooth();
                 }
         }
-        legocross();
+        legocross(); // todo: hex screw hole
         translate([wr*0.80,0,0]) {
             //cylinder(h=2*wh, r=wr/5.5, center=true);
         }
@@ -52,21 +53,21 @@ module biggear() {
     echo(360*wro/numteeth);
     echo(wro);
     gear (
-			number_of_teeth=numteeth,
-			circular_pitch=360*wro/numteeth,
-			pressure_angle=20,
-			clearance = 0.2,
-			gear_thickness=wh,
-			rim_thickness=wh,
-			rim_width=5,
-			hub_thickness=0,
-			hub_diameter=30,
-			bore_diameter=0,
-			circles=numclamps,
-			backlash=0,
-			twist=0,
-			involute_facets=0,
-			flat=false);
+        number_of_teeth=numteeth,
+        diametral_pitch=cpitch/2,
+        pressure_angle=20,
+        clearance=geartolerance,
+        backlash=geartolerance,
+        gear_thickness=wh,
+        rim_thickness=wh,
+        rim_width=5,
+        hub_thickness=0,
+        hub_diameter=30,
+        bore_diameter=0,
+        circles=numclamps,
+        twist=0,
+        involute_facets=0,
+        flat=false);
 }
 
 module legocross() {
