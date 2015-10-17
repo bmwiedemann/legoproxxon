@@ -11,7 +11,7 @@ ch=8+hubheight+chs*1.4+wh;  // clamp height
 cpitch=1.03; // diametral pitch
 numteeth=round((wro1)*2*cpitch);
 wro=numteeth/(2*cpitch);
-numclamps=4;
+numclamps=3;
 geartolerance=0.2;
 debug=false;
 
@@ -48,9 +48,9 @@ module biggear() {
         rim_thickness=wh+1,
         rim_width=rim,
         hub_thickness=wh+hubheight,
-        hub_diameter=30,
+        hub_diameter=25,
         bore_diameter=15,
-        circles=numclamps,
+        circles=numclamps*2,
         twist=0,
         involute_facets=0,
         flat=false);
@@ -59,7 +59,7 @@ module biggear() {
 module clamps()
 {
     for (alpha = [1:numclamps]) {
-        rotate((0.5+alpha)*360/numclamps)
+        rotate((0.25+alpha)*360/numclamps)
             translate([wr+0.3, 0, ch/2]) {
                 clamp();
             }
@@ -78,4 +78,3 @@ module clamp()
 }
 
 // Written 2015 by Bernhard M. Wiedemann <bernhard+scad lsmod de>
-
