@@ -3,8 +3,9 @@
 cw=3;  // clamp width
 wr=cw+58/2;    // wheel radius
 wh=1.5; // wheel height
-ch=13+wh;  // clamp height
-chs=ch/12;  // clamp holder size
+hubheight=1; // in addition to wh
+chs=1.4;  // clamp holder size
+ch=8+hubheight+chs*1.4+wh;  // clamp height
 cpitch=1.03; // diametral pitch
 rim=3;
 numteeth=round((wr+rim)*2*cpitch);
@@ -45,7 +46,7 @@ module biggear() {
         gear_thickness=wh,
         rim_thickness=wh+1,
         rim_width=rim,
-        hub_thickness=wh+1,
+        hub_thickness=wh+hubheight,
         hub_diameter=30,
         bore_diameter=15,
         circles=numclamps,
