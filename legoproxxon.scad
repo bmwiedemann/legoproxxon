@@ -6,10 +6,10 @@ wh=1.5; // wheel height
 ch=13+wh;  // clamp height
 chs=ch/12;  // clamp holder size
 lsc=4.85;  // legocross size
-cpitch=8/3.1415926; // circular pitch
+cpitch=1.03; // diametral pitch
 rim=3;
-numteeth=round((wr+rim)*cpitch);
-wro=numteeth/cpitch;
+numteeth=round((wr+rim)*2*cpitch);
+wro=numteeth/(2*cpitch);
 numclamps=4;
 geartolerance=0.2;
 debug=false;
@@ -55,7 +55,7 @@ module biggear() {
     echo(wro);
     gear (
         number_of_teeth=numteeth,
-        diametral_pitch=cpitch/2,
+        diametral_pitch=cpitch,
         pressure_angle=20,
         clearance=geartolerance,
         backlash=geartolerance,
