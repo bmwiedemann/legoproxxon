@@ -12,6 +12,7 @@ cpitch=1.03; // diametral pitch
 numteeth=round((wro1)*2*cpitch);
 wro=numteeth/(2*cpitch);
 numclamps=3;
+cthr=2; // clamp-to-hole ratio
 geartolerance=0.2;
 font = "Liberation Sans";
 debug=false;
@@ -37,7 +38,7 @@ module wheelObject() {
             biggear();
         }
         if(final)
-        rotate([0,0,360/numclamps/4])
+        rotate([0,0,360/numclamps/2/cthr])
          translate([wr*0.7,0,wh-0.5])
           linear_extrude(height = 0.6)
            text("legoproxxon", size = 2, font = font, halign = "center", valign = "center", $fn = 16);
@@ -57,7 +58,7 @@ module biggear() {
         hub_thickness=wh+hubheight,
         hub_diameter=25,
         bore_diameter=15,
-        circles=numclamps*2,
+        circles=round(numclamps*cthr),
         twist=0,
         involute_facets=0,
         flat=false);
@@ -66,7 +67,7 @@ module biggear() {
 module clamps()
 {
     for (alpha = [1:numclamps]) {
-        rotate((0.25+alpha)*360/numclamps)
+        rotate((0.5/cthr+alpha)*360/numclamps)
             translate([wr+0.3, 0, ch/2]) {
                 clamp();
             }
