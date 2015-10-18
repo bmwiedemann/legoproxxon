@@ -13,6 +13,7 @@ numteeth=round((wro1)*2*cpitch);
 wro=numteeth/(2*cpitch);
 numclamps=3;
 geartolerance=0.2;
+font = "Liberation Sans";
 debug=false;
 
 
@@ -34,6 +35,10 @@ module wheelObject() {
         union() {
             biggear();
         }
+        rotate([0,0,360/numclamps/4])
+         translate([wr*0.7,0,wh-0.5])
+          linear_extrude(height = 0.6)
+           text("legoproxxon", size = 2, font = font, halign = "center", valign = "center", $fn = 16);
     }
 }
 
