@@ -15,6 +15,7 @@ numclamps=3;
 geartolerance=0.2;
 font = "Liberation Sans";
 debug=false;
+final=false;
 
 
 // Global resolution
@@ -35,6 +36,7 @@ module wheelObject() {
         union() {
             biggear();
         }
+        if(final)
         rotate([0,0,360/numclamps/4])
          translate([wr*0.7,0,wh-0.5])
           linear_extrude(height = 0.6)
