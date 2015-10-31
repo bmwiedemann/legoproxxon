@@ -37,11 +37,16 @@ module wheelObject() {
         union() {
             biggear();
         }
-        if(final)
-        rotate([0,0,360/numclamps/2/cthr])
-         translate([wr*0.7,0,wh-0.5])
-          linear_extrude(height = 0.6)
-           text("legoproxxon", size = 2, font = font, halign = "center", valign = "center", $fn = 16);
+        if(final) {
+            rotate([0,0,360/numclamps/2/cthr])
+             translate([wr*0.61,0,wh-0.3])
+              linear_extrude(height = 0.6)
+               text("legoproxxon", size = 2.5, font = font, halign = "center", valign = "center", $fn = 16);
+            rotate([0,180,360/numclamps/2/cthr])
+             translate([wr*0.63,0,-0.3])
+              linear_extrude(height = 0.6)
+               text("LEGOPROXXON", size = 2.1, font = font, halign = "center", valign = "center", $fn = 16);
+        }
     }
 }
 
