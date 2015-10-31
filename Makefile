@@ -1,8 +1,8 @@
 
 legoproxxon.gcode: legoproxxon.stl
-	slic3r --solid-infill-below-area 25 --fill-density 15 --gui-mode on legoproxxon.stl
+	slic3r --solid-infill-below-area 25 --fill-density 50 --gui-mode on legoproxxon.stl
 
-legoproxxon.stl: legoproxxon.scad
+%.stl: %.scad
 	openscad -o $@ $<
 
 legoproxxon.png: legoproxxon.scad
